@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>draggable demo</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+  <style>
+  .draggable {
+    width: 100px;
+    height: 100px;
+    background: #ccc;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+ 
+	<div id="board">
+		<div class="draggable" id="principal">Drag me</div>
+		<div class="draggable" id="copia">Copia movimentação</div>
+	</div>
+ 
+<script>
+$(".draggable").draggable();
+$("#copia").offset({ top: 100, left: 100 });
+$("#principal").on( "dragstop", function( event, ui ) {
+	console.log(ui.offset);
+	$("#copia").offset({ top: 100+ui.offset.top, left: 100+ui.offset.left });
+
+} );
+</script>
+ 
+</body>
+</html>
